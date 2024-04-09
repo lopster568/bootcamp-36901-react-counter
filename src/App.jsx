@@ -1,10 +1,21 @@
-import Counter from "./counter/Counter";
+import { useEffect, useState } from "react";
+import MyComponent from "./MyComponent/MyComponent";
 
 function App() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    console.log("App component is mounted");
+  }, []);
+
+  useEffect(() => {
+    console.log("Component is updated");
+  }, [data]);
+
   return (
     <div>
-      <h1>Simple Counter</h1>
-      <Counter />
+      <MyComponent data={data} />
+      <button onClick={() => setData(data + "hi")} >Change</button>
     </div>
   );
 }
